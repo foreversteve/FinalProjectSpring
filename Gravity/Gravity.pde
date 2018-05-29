@@ -1,8 +1,10 @@
- Player player;
+ Player player; 
  ArrayList<Planet> planets;
  boolean [] keys = new boolean[128];
+ ArrayList<Projectile> projectiles;
+ ArrayList<Turret> turrets;
  
- class Player implements GravityEnabled{
+ class Player{
   float xcor,ycor;
   float xspeed,yspeed;
   float r;
@@ -94,15 +96,35 @@
     update();
     display();
   }
+  
+  void fire(float val){
+    float theta = atan((ycor - mouseY)/(xcor - mouseX));
+    float cx;
+    float cy;
+    if (xcor - mouseX > 0){
+      cx = -val * cos(theta);
+      cy = -val * sin(theta);
+    }
+    else{
+      cx = val * cos(theta);
+      cy = val * sin(theta);
+    }
+    projectiles.add(new Projectile(xcor,ycor,cx,cy,"White"));
+  }
 }
 
 void setup(){
   size(1300,1100);
   background(0);
+  
   player = new Player();
+  projectiles = new ArrayList<Projectile>();
   planets = new ArrayList<Planet>();
+  turrets= new ArrayList<Turret>();
+  
   planets.add(new Planet(width/2,height/2,200));
   //planets.add(new Planet(width/3*2,height/2,200));
+  turrets.add(new Turret(width/2-25,height/2-105,10,1,"Orange",planets.get(0)));
   planets.get(0).generateParticle(15,18);
   
 }
@@ -110,11 +132,29 @@ void setup(){
 void draw(){
   background(0);
   player.run();
+  for (Turret a: turrets){
+    a.run(player);
+  }
+  for (int i = 0; i < projectiles.size(); i++){
+    if (projectiles.get(i).dead){
+      projectiles.remove(i);
+    }
+    else{
+      projectiles.get(i).run();
+    }
+  }
+  //print(projectiles.size());
   for (Planet x : planets){
     x.run(player);
+    for (Projectile a : projectiles){
+      x.update(a);
+    }
     x.generateParticle(15,18);
+    stroke(255);
+    line(mouseX-15,mouseY+15,mouseX+15,mouseY-15);
+    line(mouseX+15,mouseY+15,mouseX-15,mouseY-15);
+    stroke(0);
   }
-  
 }
 
 void keyPressed(){
@@ -133,4 +173,8 @@ void keyReleased(){
   catch(ArrayIndexOutOfBoundsException e){
     
   }
+}
+
+void mouseClicked(){
+    player.fire(7.0);
 }
