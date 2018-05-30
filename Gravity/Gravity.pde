@@ -38,8 +38,10 @@ void draw(){
   //print(projectiles.size());
   for (Planet x : planets){
     x.run(player);
+    x.collide(x, player);
     for (Projectile a : projectiles){
       x.update(a);
+     // x.collide(x, planets.get(0));
     }
     x.generateParticle(15,18);
     stroke(255);
@@ -47,6 +49,8 @@ void draw(){
     line(mouseX+15,mouseY+15,mouseX-15,mouseY-15);
     stroke(0);
   }
+  //System.out.println(player.xcor);
+  
 }
 
   
