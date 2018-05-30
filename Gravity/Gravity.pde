@@ -4,6 +4,11 @@ ArrayList<Planet> planets;
 
 ArrayList<Projectile> projectiles;
 ArrayList<Turret> turrets;
+ArrayList<MapObject> world;
+void checkbounds(){
+    
+  
+}
  
 void setup(){
   size(1300,1100);
@@ -13,17 +18,65 @@ void setup(){
   projectiles = new ArrayList<Projectile>();
   planets = new ArrayList<Planet>();
   turrets= new ArrayList<Turret>();
-  
+  world = new ArrayList<MapObject>();
   planets.add(new Planet(width/2,height/2,200));
   //planets.add(new Planet(width/3*2,height/2,200));
   turrets.add(new Turret(width/2-25,height/2-105,10,1,"Orange",planets.get(0)));
   planets.get(0).generateParticle(15,18);
+try{
   
+  for(Planet x : planets){
+    System.out.println(planets.size());
+    System.out.println(x.xcor);
+    world.add(x); 
+   
+  }
+  for(Turret x : turrets){
+    world.add(x); 
+  }
+  
+  for(Projectile x : projectiles){
+    world.add(x); 
+  }
+}catch(NullPointerException e){}
+  
+}
+
+void scroll(){
+  try{
+  if(player.ycor > height * 9 / 10){
+   for(MapObject x : world){
+      x.move(0 , -1.5);
+   }
+   //player.yspeed = 0;
+   player.ycor -= player.yspeed;
+  }
+  if(player.ycor < height / 10){
+   for(MapObject x : world){
+      x.move(0 , 1.5);
+   }
+   player.ycor -= player.yspeed;
+  }
+  if(player.xcor > width * 9 / 10){
+   for(MapObject x : world){
+      x.move(-1.5, 0);
+   }
+   player.xcor -= player.xspeed;
+  }
+  if(player.xcor < width / 10){
+   for(MapObject x : world){
+      x.move(1.5 , 0);
+   }
+   player.xcor -= player.xspeed;
+  }
+  
+  }catch(NullPointerException e){}
 }
 
 void draw(){
   background(0);
   player.run();
+  scroll();
   for (Turret a: turrets){
     a.run(player);
   }

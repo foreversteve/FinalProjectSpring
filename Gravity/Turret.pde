@@ -1,6 +1,6 @@
 ArrayList<Projectile> projectiless;
-class Turret{
-  float xcor,ycor;
+class Turret extends MapObject{
+  //float xcor,ycor;
   
   float fs;
   float pspeed;
