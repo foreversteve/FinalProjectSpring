@@ -1,3 +1,4 @@
+/*
 public class GravityEnabled{
   float xcor;
   float ycor;
@@ -11,3 +12,5 @@ public class GravityEnabled{
     yspeed += b;
   }
 }
+
+*/

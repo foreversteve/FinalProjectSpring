@@ -1,9 +1,9 @@
-class Projectile{
-  float xcor,ycor;
-  float xspeed,yspeed;
+class Projectile extends MapObject{
+  //float xcor,ycor;
+  //float xspeed,yspeed;
   
   String colour;
-  float r;
+  //float r;
   boolean dead;
   
   public Projectile(float x, float y, float xv, float yv, String c){
@@ -31,7 +31,9 @@ class Projectile{
         }
     }
   }
-  
+  void display(){
+    
+  }
   void run(){
     if (colour.equals("White")){
       fill(255);

@@ -1,7 +1,7 @@
-class Planet {
-   float xcor,ycor;
+class Planet extends MapObject{
+   //float xcor,ycor;
    float g;
-   float r;
+   //float r;
    
    float direction;
    float distance;
@@ -23,10 +23,15 @@ class Planet {
      direction = 1.0;
      distance = r;
    }
+   
    void display(){
      fill(0,224,224);
      ellipse(xcor,ycor,r,r);
    }
+   public void move(){};
+   public void run(){};
+   public void shift(){};
+   
    void run(Player player){
      display();
      update(player);
