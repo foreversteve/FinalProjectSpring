@@ -38,7 +38,7 @@ void draw(){
   //print(projectiles.size());
   for (Planet x : planets){
     x.run(player);
-    x.collide(x, player);
+    //x.collide(x, player);
     for (Projectile a : projectiles){
       x.update(a);
      // x.collide(x, planets.get(0));
