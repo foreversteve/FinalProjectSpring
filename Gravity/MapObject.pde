@@ -10,6 +10,8 @@ abstract class MapObject{
  
  abstract void display();
  
+ abstract void update(Player user);
+ 
  public void collide(MapObject obj1, MapObject obj2){
     if(pow(obj1.xcor - obj2.xcor, 2) + pow(obj1.ycor - obj2.ycor, 2) <= pow(obj1.r/2 + obj2.r/2, 2)){
       float m = (obj1.ycor - obj2.ycor) / (obj1.xcor - obj2.xcor);

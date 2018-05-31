@@ -47,6 +47,10 @@ class Turret extends MapObject{
     fs+=1;
   }
   
+  void update(Player user){
+    
+  }
+  
   void run(Player p){
     translate(xcor,ycor);
     display();

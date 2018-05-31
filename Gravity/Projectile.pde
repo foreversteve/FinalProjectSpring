@@ -34,6 +34,11 @@ class Projectile extends MapObject{
   void display(){
     
   }
+  
+  void update(Player user){
+    
+  }
+  
   void run(){
     if (colour.equals("White")){
       fill(255);

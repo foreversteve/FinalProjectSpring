@@ -29,14 +29,20 @@ class Planet extends MapObject{
      ellipse(xcor,ycor,r,r);
    }
    public void move(){};
-   public void run(){};
    public void shift(){};
    
    void run(Player player){
      display();
+     
      update(player);
    }
+   
+   void run(){
+    display(); 
+   }
+   
    void update(Player user){
+     
      float theta = atan((ycor - user.ycor)/(xcor - user.xcor));
      g = 15 / pow(pow(xcor - user.xcor,2)+ pow(ycor-user.ycor,2),0.5);
      if (xcor - user.xcor > 0){
@@ -47,6 +53,7 @@ class Planet extends MapObject{
        user.xspeed -= g * cos(theta);
        user.yspeed -= g * sin(theta);
      }
+     
    }
    
    void update(Projectile user){

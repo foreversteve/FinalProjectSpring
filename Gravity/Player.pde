@@ -12,7 +12,8 @@ public class Player extends MapObject{
     
     r = 40.0;
   }
-  void update(){
+  
+  void update(Player user){
     if (keys['a']) //move left 
       xspeed -= 0.1;
     if (keys['d']) //move right
@@ -21,13 +22,51 @@ public class Player extends MapObject{
       yspeed -= 0.1;
     if (keys['s']) //move down
       yspeed += 0.1;
-    
-     //print(xspeed+" " + yspeed);
-      
+     //print(xspeed+" " + yspeed); 
     checkWalls();
     checkPlanet();
     
   }
+  
+  //void update(Player user){
+    
+  //}
+  
+  void update(ArrayList<MapObject> map){
+    //fix this later, it will prevent the plater for taking damage whene its on the wall
+    xcor+= xspeed;
+    ycor+= yspeed; 
+   if(ycor > height * 9 / 10){
+   for(MapObject x : world){
+     x.move(0 , -1.5);
+   }
+   ycor -= yspeed;
+  }
+  if(ycor < height / 10){
+   for(MapObject x : world){
+      x.move(0 , 1.5);
+   }
+    ycor -= yspeed;
+  }if(xcor > width * 9 / 10){
+   for(MapObject x : world){
+      x.move(-1.5, 0);
+   }
+   xcor -= xspeed;
+  }if(xcor < width / 10){
+   for(MapObject x : world){
+      x.move(1.5 , 0);
+   }
+   xcor -= xspeed;
+  }
+  
+  if((ycor < height * 9 / 10) && (ycor > height / 10) && (xcor < width * 9 / 10) && (xcor > width / 10)){
+    for(MapObject obj : map){
+       obj.update(this); 
+    }  
+    update(this);
+  }
+  }
+  
   void checkWalls(){
     if (xcor < r/2) {
       xspeed *= -0.5;
@@ -80,15 +119,16 @@ public class Player extends MapObject{
     }
   }  
   void display(){
-    xcor+= xspeed;
-    ycor+= yspeed;
+    
     fill(200);
     ellipse(xcor,ycor,r,r);
     
     
   }
-  void run(){
-    update();
+  
+  
+  void run(ArrayList<MapObject> map){
+    update(map);
     display();
   }
   
