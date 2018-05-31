@@ -38,7 +38,9 @@ class Projectile extends MapObject{
   void update(Player user){
     
   }
-  
+  void die(){
+    
+  }
   void run(){
     if (colour.equals("White")){
       fill(255);

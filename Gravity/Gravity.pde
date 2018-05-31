@@ -21,6 +21,7 @@ void setup(){
   //planets.add(new Planet(width/3*2,height/2,200));
   turrets.add(new Turret(width/2-25,height/2-105,10,1,"Orange",planets.get(0)));
   planets.get(0).generateParticle(15,18);
+  
   try{
   
     for(Planet x : planets){
@@ -39,15 +40,16 @@ void setup(){
     }
   }catch(NullPointerException e){}
   
- }
+}
  
 void draw(){
   background(0);
   player.run(world);
-  //scroll();
+
   for (Turret a: turrets){
     a.run(player);
   }
+  
   for (int i = 0; i < projectiles.size(); i++){
     if (projectiles.get(i).dead){
       projectiles.remove(i);
@@ -56,6 +58,7 @@ void draw(){
       projectiles.get(i).run();
     }
   }
+  
   //print(projectiles.size());
   
   for (Planet x : planets){
@@ -65,12 +68,15 @@ void draw(){
       x.update(a);
      // x.collide(x, planets.get(0));
     }
+    
     x.generateParticle(15,18);
-    stroke(255);
+    
+  }
+  
+  stroke(255);
     line(mouseX-15,mouseY+15,mouseX+15,mouseY-15);
     line(mouseX+15,mouseY+15,mouseX-15,mouseY-15);
     stroke(0);
-  }
   //System.out.println(player.xcor);
   
 }

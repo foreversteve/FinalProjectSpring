@@ -56,6 +56,8 @@ class Planet extends MapObject{
      
    }
    
+   
+   
    void update(Projectile user){
      float theta = atan((ycor - user.ycor)/(xcor - user.xcor));
      g = 15 / pow(pow(xcor - user.xcor,2)+ pow(ycor-user.ycor,2),0.5);
@@ -68,6 +70,8 @@ class Planet extends MapObject{
        user.yspeed -= g * sin(theta);
      }
    }
+   
+   
    
    void generateParticle(float radius,float number){
      

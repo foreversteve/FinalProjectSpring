@@ -8,6 +8,7 @@ class Turret extends MapObject{
   String colour;
   float angle;
   
+  
   public Turret(float x, float y, float ps, float fspeed, String c,Planet p){
     xcor = x;
     ycor = y;
@@ -26,6 +27,9 @@ class Turret extends MapObject{
     }
   }
   
+  void die(){
+    
+  }
   void fire(Player p){
     float theta = atan((ycor - p.ycor)/(xcor - p.xcor));
     float cx;

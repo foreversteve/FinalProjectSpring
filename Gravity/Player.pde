@@ -1,8 +1,6 @@
 public class Player extends MapObject{
-  //float xcor,ycor;
-  //float xspeed,yspeed;
-  //float r;
   boolean [] keys = new boolean[128];
+  
   public Player(){
     xcor = 200;
     ycor = 200;
@@ -12,6 +10,7 @@ public class Player extends MapObject{
     
     r = 40.0;
   }
+  
   
   void update(Player user){
     if (keys['a']) //move left 
@@ -23,14 +22,10 @@ public class Player extends MapObject{
     if (keys['s']) //move down
       yspeed += 0.1;
      //print(xspeed+" " + yspeed); 
-    checkWalls();
+    //checkWalls();
     checkPlanet();
-    
   }
   
-  //void update(Player user){
-    
-  //}
   
   void update(ArrayList<MapObject> map){
     //fix this later, it will prevent the plater for taking damage whene its on the wall
@@ -86,6 +81,9 @@ public class Player extends MapObject{
     }
   }
   
+  void die(){
+    
+  }
   void checkPlanet(){
     for (Planet x : planets){
         if (pow(xcor - x.xcor,2)+ pow(ycor-x.ycor,2) < pow(x.r/2+r/2,2)) {
