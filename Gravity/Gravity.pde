@@ -9,7 +9,7 @@ void checkbounds(){
 }
  
 void setup(){
-  size(1300,1100);
+  size(1300,900);
   background(0);
   
   player = new Player();
