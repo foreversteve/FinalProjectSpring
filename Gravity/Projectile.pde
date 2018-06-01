@@ -1,10 +1,6 @@
 class Projectile extends MapObject{
-  //float xcor,ycor;
-  //float xspeed,yspeed;
-  
   String colour;
-  //float r;
-  boolean dead;
+
   
   public Projectile(float x, float y, float xv, float yv, String c){
     xcor = x;

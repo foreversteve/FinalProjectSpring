@@ -33,23 +33,23 @@ public class Player extends MapObject{
     ycor+= yspeed; 
    if(ycor > height * 9 / 10){
    for(MapObject x : world){
-     x.move(0 , -1.5);
+     x.move(0 , -yspeed);
    }
    ycor -= yspeed;
   }
   if(ycor < height / 10){
    for(MapObject x : world){
-      x.move(0 , 1.5);
+      x.move(0 , -yspeed);
    }
     ycor -= yspeed;
   }if(xcor > width * 9 / 10){
    for(MapObject x : world){
-      x.move(-1.5, 0);
+      x.move(-xspeed, 0);
    }
    xcor -= xspeed;
   }if(xcor < width / 10){
    for(MapObject x : world){
-      x.move(1.5 , 0);
+      x.move(-xspeed , 0);
    }
    xcor -= xspeed;
   }

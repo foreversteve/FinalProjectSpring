@@ -1,5 +1,6 @@
 abstract class MapObject{
  public float xcor, ycor, r, xspeed, yspeed;
+ public boolean dead;
  public void move(float xinc, float yinc){
    xcor += xinc;
    ycor += yinc;

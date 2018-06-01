@@ -1,8 +1,6 @@
 class Planet extends MapObject{
-   //float xcor,ycor;
    float g;
-   //float r;
-   
+  
    float direction;
    float distance;
    public Planet(float x, float y,float radius){

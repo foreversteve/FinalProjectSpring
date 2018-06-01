@@ -1,6 +1,5 @@
 ArrayList<Projectile> projectiless;
 class Turret extends MapObject{
-  //float xcor,ycor;
   
   float fs;
   float pspeed;
@@ -30,6 +29,7 @@ class Turret extends MapObject{
   void die(){
     
   }
+  
   void fire(Player p){
     float theta = atan((ycor - p.ycor)/(xcor - p.xcor));
     float cx;
