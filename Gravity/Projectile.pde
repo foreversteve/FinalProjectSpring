@@ -15,9 +15,12 @@ class Projectile extends MapObject{
     dead = false;
   }
   
+  public boolean collide(){
+      return true; 
+   }
   void checkWalls(){
     if (xcor < r/2 || xcor > width - r/2 || ycor < r/2 ||ycor > height - r/2) {
-      dead = true;
+      //dead = true;
     }
   }
   

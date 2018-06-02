@@ -1,8 +1,12 @@
 class Planet extends MapObject{
    float g;
-   final String name = "Planet";
    float direction;
    float distance;
+   
+   public boolean collide(){
+      return false; 
+   }
+   
    public Planet(float x, float y,float radius){
      xcor = x;
      ycor = y;

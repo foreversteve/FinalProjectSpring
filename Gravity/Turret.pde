@@ -9,6 +9,9 @@ class Turret extends MapObject{
   String colour;
   float angle;
   
+  public boolean collide(){
+      return false; 
+   }
   
   public Turret(float x, float y, float ps, float fspeed, String c,Planet p){
     xcor = x;

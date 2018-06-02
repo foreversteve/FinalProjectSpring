@@ -3,8 +3,8 @@ public class Player extends MapObject{
   boolean [] keys = new boolean[128];
   
   public Player(){
-    xcor = 200;
-    ycor = 200;
+    xcor = width / 2;
+    ycor = height / 2;
     
     xspeed = 0.0;
     yspeed = 0.0;
@@ -12,18 +12,14 @@ public class Player extends MapObject{
     r = 40.0;
   }
   
+  public boolean collide(){
+      return true; 
+   }
+   
   
   void update(Player user){
-    if (keys['a']) //move left 
-      xspeed -= 0.1;
-    if (keys['d']) //move right
-      xspeed += 0.1;
-    if (keys['w']) //move up
-      yspeed -= 0.1;
-    if (keys['s']) //move down
-      yspeed += 0.1;
-     //print(xspeed+" " + yspeed); 
-    //checkWalls();
+   xspeed += .001 * (mouseX - xcor);
+    yspeed += .001 * (mouseY - ycor);
     checkPlanet();
   }
   

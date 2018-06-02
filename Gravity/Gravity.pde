@@ -9,7 +9,7 @@ void checkbounds(){
 }
  
 void setup(){
-  size(1300,900);
+  fullScreen();
   background(0);
   
   player = new Player();
@@ -17,9 +17,10 @@ void setup(){
   planets = new ArrayList<Planet>();
   turrets= new ArrayList<Turret>();
   world = new ArrayList<MapObject>();
-  planets.add(new Planet(width/2,height/2,200));
+  
+  planets.add(new Planet(width/2 + 200,height/2 + 200 ,200));
   //planets.add(new Planet(width/3*2,height/2,200));
-  turrets.add(new Turret(width/2-25,height/2-105,10,1,"Orange",planets.get(0)));
+  turrets.add(new Turret(width/2-25 + 200 ,height/2-105 + 200,10,1,"Orange",planets.get(0)));
   planets.get(0).generateParticle(15,18);
   
   try{
@@ -67,6 +68,7 @@ void draw(){
     for (Projectile a : projectiles){
       x.update(a);
      // x.collide(x, planets.get(0));
+     x.collide(x,a);
     }
     
     x.generateParticle(15,18);
