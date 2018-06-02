@@ -1,4 +1,5 @@
 class Projectile extends MapObject{
+  final String name = "Projectile";
   String colour;
 
   

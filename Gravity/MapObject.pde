@@ -1,6 +1,7 @@
 abstract class MapObject{
  public float xcor, ycor, r, xspeed, yspeed;
  public boolean dead;
+ String name;
  public void move(float xinc, float yinc){
    xcor += xinc;
    ycor += yinc;
@@ -12,28 +13,29 @@ abstract class MapObject{
  
  abstract void update(Player user);
  
- /*
- public void collide(MapObject obj1, MapObject obj2){
-    if(pow(obj1.xcor - obj2.xcor, 2) + pow(obj1.ycor - obj2.ycor, 2) <= pow(obj1.r/2 + obj2.r/2, 2)){
-      float m = (obj1.ycor - obj2.ycor) / (obj1.xcor - obj2.xcor);
-      m = atan(-1 / m);
-      strokeWeight(4);
-      line(obj1.xcor, obj1.ycor, 10, obj1.ycor + 10 * m - obj1.xcor * m); 
-      //float m1 = atan(obj1.yspeed / obj1.xspeed);
-      float m2 = atan(obj2.yspeed / obj2.xspeed);
-      //System.out.println(m1 + " " + m2);
-      //float mag1 = obj1.yspeed / (sin(atan(m1)));
-      float mag2 = obj1.yspeed / (sin(atan(m2)));
-      //m1 = PI - (2* (PI - (m1 + m)) + m1);
-      m2 = PI - (2* (PI - (m2 + m)) + m2);
-      System.out.println(m2 * 180 / PI);
+ 
+ public void collide(MapObject obj1, MapObject obj2,float t){
+    if (checkCollide(obj1,obj2) && t < 2){
+      float theta0= atan (-1 / ((obj1.ycor - obj2.ycor) / (obj1.xcor - obj2.xcor)));
+      float theta1 = atan (obj1.yspeed / obj1.xspeed);
+      float theta = radians(180) - theta0 - theta1;
       
-      //obj1.yspeed = mag1 * sin(m1);
-      //obj1.xspeed = mag1 * cos(m1);
+      theta += radians(180)-theta0;
       
-      obj2.yspeed = mag2 * sin(m2);
-      obj2.xspeed = mag2 * cos(m2);
+      float mag = obj1.xspeed;
+      obj1.xspeed = mag * cos(theta);
+      obj1.yspeed = mag * sin(theta);
+      
+      t+=1;
+      if (! obj2.name.equals("Planet")){
+        collide(obj2,obj1,t);
+      }
     }
+      
  }
- */
+ 
+ public boolean checkCollide(MapObject obj1, MapObject obj2){
+    return pow(obj1.r+obj2.r,2) > pow(obj1.xcor-obj2.xcor,2) + pow (obj1.ycor-obj2.ycor,2);
+ }
+ 
 }

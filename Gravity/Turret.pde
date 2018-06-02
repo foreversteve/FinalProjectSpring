@@ -1,6 +1,8 @@
 ArrayList<Projectile> projectiless;
 class Turret extends MapObject{
   
+  final String name = "Turret";
+  
   float fs;
   float pspeed;
   

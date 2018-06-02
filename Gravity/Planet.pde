@@ -1,6 +1,6 @@
 class Planet extends MapObject{
    float g;
-  
+   final String name = "Planet";
    float direction;
    float distance;
    public Planet(float x, float y,float radius){

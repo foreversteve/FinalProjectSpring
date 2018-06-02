@@ -1,4 +1,5 @@
 public class Player extends MapObject{
+  final String name = "Player";
   boolean [] keys = new boolean[128];
   
   public Player(){
