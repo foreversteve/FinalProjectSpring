@@ -12,8 +12,12 @@ class Turret extends MapObject{
   
   
   public Turret(float x, float y, float ps, float fspeed, String c, Planet p){
+    health = 15;
+    
     xcor = x;
     ycor = y;
+    
+    r = 5;
     
     fs = fspeed;
     
@@ -30,6 +34,20 @@ class Turret extends MapObject{
     }
   }
   
+  void takeDamage(MapObject obj){
+    for(int i = 0; i < world.size(); i++){
+      try{
+        if(((Projectile) obj).colour.equals("White")){
+          
+          health--;
+          if(health == 0){
+             world.remove(this); 
+          }
+        }
+     }catch(ClassCastException e){}
+    }  
+    
+  }
   
   void fire(Player p){
     float theta = atan((ycor - p.ycor)/(xcor - p.xcor));
@@ -47,7 +65,7 @@ class Turret extends MapObject{
         cx = pspeed * cos(theta);
         cy = pspeed * sin(theta);
       }
-      Projectile proj = new Projectile(xcor,ycor,cx,cy,"Yellow");
+      Projectile proj = new Projectile(xcor,ycor - 10,cx,cy,"Yellow");
       world.add(proj);
     }
     fs+=1;
@@ -62,7 +80,8 @@ class Turret extends MapObject{
   }
   
   void display(){
-    fill(255,140,0);
+    System.out.println(health);
+    fill((255 / 15) * (15 - health),140,0);
     //rotate(radians(60));
     ellipse(25,0,30,16);
     rect(0,0,50,20);

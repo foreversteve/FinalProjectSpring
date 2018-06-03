@@ -1,6 +1,8 @@
 public class Player extends MapObject{
   
   public Player(){
+    health = 100;
+    
     xcor = width / 2;
     ycor = height / 2;
     
@@ -22,8 +24,8 @@ public class Player extends MapObject{
   
   
   void update(){
-    for(MapObject obj : world){
-       obj.collide(obj, this); 
+    for(int i = 0; i < world.size(); i++){
+       world.get(i).collide(world.get(i), this); 
     }
     
     userInput();
@@ -62,12 +64,20 @@ public class Player extends MapObject{
   void display(){
     fill(200);
     ellipse(xcor,ycor,r,r);
+    text(health,20,20);
   }
   
   
   void run(){
     update();
     display();
+  }
+  
+  void takeDamage(MapObject obj){
+    health--; 
+    if(health == 0){
+       world.remove(this); 
+    }
   }
   
   void fire(float val){

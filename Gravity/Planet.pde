@@ -41,9 +41,9 @@ class Planet extends MapObject{
    void run(){
      display();
      generateParticle(15,18);
-     for(MapObject obj : world){
-        if(obj.moves()){  
-            update(obj);
+     for(int i = 0; i < world.size(); i++){
+        if(world.get(i).moves()){  
+            update(world.get(i));
         }
       }
    }
@@ -78,5 +78,9 @@ class Planet extends MapObject{
      }
      distance += 2.5*direction;
      
-   }   
+   }
+   
+   void takeDamage(MapObject obj){
+     
+   }
  }

@@ -6,7 +6,7 @@ abstract class MapObject{
    ycor += yinc;
  }
  
- //abstract void takeDamage(MapObject obj);
+ abstract void takeDamage(MapObject obj);
  
  abstract boolean moves();
  
@@ -18,10 +18,10 @@ abstract class MapObject{
  
  public void collide(MapObject obj1, MapObject obj2){
    
-   if(obj1 != obj2){
+   if(obj1 != obj2 && checkCollide(obj1,obj2)){
      
-     //obj1.takeDamage(obj2);
-     //obj2.takeDamage(obj1);
+     obj1.takeDamage(obj2);
+     obj2.takeDamage(obj1);
      
      if(obj1.moves()){
          collideHelper(obj1,obj2);
@@ -30,11 +30,11 @@ abstract class MapObject{
      if(obj2.moves()){
         collideHelper(obj2, obj1); 
      }
-   }    
+   }  
+ 
  }
  
  public void collideHelper(MapObject obj1, MapObject obj2){
-    if (checkCollide(obj1,obj2)){
       
       obj1.xspeed *= -1;
       obj1.yspeed *= -1;
@@ -51,8 +51,6 @@ abstract class MapObject{
       obj1.yspeed = mag * sin(theta);
       */
       
-      
-    }
       
  }
  
