@@ -5,6 +5,7 @@ class Turret extends MapObject{
   String colour;
   float angle;
   
+  
   public boolean moves(){
       return false; 
    }
