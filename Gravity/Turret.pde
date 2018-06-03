@@ -1,5 +1,4 @@
 class Turret extends MapObject{
-  
   float fs;
   float pspeed;
   
@@ -11,11 +10,12 @@ class Turret extends MapObject{
    }
   
   
-  public Turret(float x, float y, float ps, float fspeed, String c,Planet p){
+  public Turret(float x, float y, float ps, float fspeed, String c, Planet p){
     xcor = x;
     ycor = y;
     
     fs = fspeed;
+    
     pspeed = ps;
     
     colour = c;
@@ -29,9 +29,6 @@ class Turret extends MapObject{
     }
   }
   
-  void die(){
-    
-  }
   
   void fire(Player p){
     float theta = atan((ycor - p.ycor)/(xcor - p.xcor));
@@ -55,15 +52,12 @@ class Turret extends MapObject{
     fs+=1;
   }
   
-  void update(Player user){
-    
-  }
   
   void run(){
     translate(xcor,ycor);
     display();
     translate(-xcor,-ycor);
-    fire((Player) world.get(0));
+    fire(player);
   }
   
   void display(){

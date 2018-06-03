@@ -16,17 +16,17 @@ public class Player extends MapObject{
    
   
   void userInput(){
-    xspeed += .001 * (mouseX - xcor);
-    yspeed += .001 * (mouseY - ycor);
+    xspeed += .0006 * (mouseX - xcor);
+    yspeed += .0006 * (mouseY - ycor);
   }
   
   
   void update(){
     userInput();
     
-    for(MapObject obj : world){
+    //for(MapObject obj : world){
     //   obj.collide(obj, this); 
-    }
+    //}
     
     xcor+= xspeed;
     ycor+= yspeed; 
@@ -97,12 +97,10 @@ public class Player extends MapObject{
   }  
   
   */
+  
   void display(){
-    
     fill(200);
     ellipse(xcor,ycor,r,r);
-    
-    
   }
   
   

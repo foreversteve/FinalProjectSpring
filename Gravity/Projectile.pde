@@ -16,26 +16,19 @@ class Projectile extends MapObject{
    }
    
   void display(){
-    
-  }
-  
-  void update(Player user){
-    
-  }
-  
-  void die(){
-    
-  }
-  
-  void run(){
     if (colour.equals("White")){
       fill(255);
     }
     if (colour.equals("Yellow")){
       fill(255,140,0);
     }
+    
+    ellipse(xcor,ycor,r,r);
+  }
+  
+  void run(){
     xcor += xspeed;
     ycor += yspeed;
-    ellipse(xcor,ycor,r,r);
+    display();
   }
 }
