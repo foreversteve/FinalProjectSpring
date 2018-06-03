@@ -11,7 +11,7 @@ class Projectile extends MapObject{
     r = 10;
   }
   
-  public boolean collide(){
+  public boolean moves(){
       return true; 
    }
    

@@ -1,6 +1,4 @@
 public class Player extends MapObject{
-  final String name = "Player";
-  boolean [] keys = new boolean[128];
   
   public Player(){
     xcor = width / 2;
@@ -12,75 +10,58 @@ public class Player extends MapObject{
     r = 40.0;
   }
   
-  public boolean collide(){
-      return true; 
-   }
+  public boolean moves(){
+    return true; 
+  }
    
   
-  void update(Player user){
-   xspeed += .001 * (mouseX - xcor);
+  void userInput(){
+    xspeed += .001 * (mouseX - xcor);
     yspeed += .001 * (mouseY - ycor);
-    //checkPlanet();
   }
   
   
   void update(){
-    //fix this later, it will prevent the plater for taking damage whene its on the wall
+    userInput();
+    
+    for(MapObject obj : world){
+    //   obj.collide(obj, this); 
+    }
+    
     xcor+= xspeed;
     ycor+= yspeed; 
+    
    if(ycor > height * 9 / 10){
-   for(MapObject x : world){
-     x.move(0 , -yspeed);
-   }
-   ycor -= yspeed;
-  }
-  if(ycor < height / 10){
-   for(MapObject x : world){
-      x.move(0 , -yspeed);
-   }
-    ycor -= yspeed;
-  }if(xcor > width * 9 / 10){
-   for(MapObject x : world){
-      x.move(-xspeed, 0);
-   }
-   xcor -= xspeed;
-  }if(xcor < width / 10){
-   for(MapObject x : world){
-      x.move(-xspeed , 0);
-   }
-   xcor -= xspeed;
-  }
-  
-  if((ycor < height * 9 / 10) && (ycor > height / 10) && (xcor < width * 9 / 10) && (xcor > width / 10)){
-    for(MapObject obj : world){
-       //obj.update(this); 
-    }  
-    update(this);
-  }
-  }
-  
-  void checkWalls(){
-    if (xcor < r/2) {
-      xspeed *= -0.5;
-      xcor = r/2;//prevents 2 true in a row
+     for(MapObject x : world){
+       x.shift(0 , -yspeed);
+     }
+     ycor -= yspeed;
     }
-    if (xcor > width - r/2) {
-      xspeed *= -0.5;
-      xcor = width - r/2;//prevents 2 true in a row
+    
+    if(ycor < height / 10){
+      for(MapObject x : world){
+        x.shift(0 , -yspeed);
+      }
+      ycor -= yspeed;
     }
-    if (ycor < r/2) {
-      yspeed *= -0.5;
-      ycor = r/2;//prevents 2 true in a row
+    
+    if(xcor > width * 9 / 10){
+      for(MapObject x : world){
+        x.shift(-xspeed, 0);
+      }
+     xcor -= xspeed;
     }
-    if (ycor > height - r/2) {
-      yspeed *= -0.5;
-      ycor = height - r/2;//prevents 2 true in a row
+    
+    if(xcor < width / 10){
+      for(MapObject x : world){
+        x.shift(-xspeed , 0);
+      }
+     xcor -= xspeed;
     }
-  }
-  
-  void die(){
     
   }
+  
+  
   /*
   void checkPlanet(){
     for (Planet x : planets){

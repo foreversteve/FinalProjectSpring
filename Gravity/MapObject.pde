@@ -1,14 +1,14 @@
 abstract class MapObject{
  public float xcor, ycor, r, xspeed, yspeed, health;
 
- public void move(float xinc, float yinc){
+ public void shift(float xinc, float yinc){
    xcor += xinc;
    ycor += yinc;
  }
  
  //abstract void takeDamage();
  
- abstract boolean collide();
+ abstract boolean moves();
  
  abstract void display();
  
@@ -17,15 +17,16 @@ abstract class MapObject{
  
  
  public void collide(MapObject obj1, MapObject obj2){
-   if(obj1.collide()){
+   if(obj1.moves()){
        collideHelper(obj1,obj2);
    }
    
-   if(obj2.collide()){
+   if(obj2.moves()){
       collideHelper(obj2, obj1); 
    }
      
  }
+ 
  public void collideHelper(MapObject obj1, MapObject obj2){
     if (checkCollide(obj1,obj2)){
       float theta0= atan (-1 / ((obj1.ycor - obj2.ycor) / (obj1.xcor - obj2.xcor)));

@@ -1,6 +1,4 @@
-ArrayList<Projectile> projectiless;
 class Turret extends MapObject{
-  final String name = "Turret";
   
   float fs;
   float pspeed;
@@ -8,7 +6,7 @@ class Turret extends MapObject{
   String colour;
   float angle;
   
-  public boolean collide(){
+  public boolean moves(){
       return false; 
    }
   
