@@ -27,8 +27,17 @@ class Projectile extends MapObject{
   }
   
   void run(){
+    for(MapObject obj : world){
+      if(obj != player){
+         obj.collide(obj, this); 
+      }
+    }
+    
     xcor += xspeed;
     ycor += yspeed;
+    
+    
+    
     display();
   }
 }

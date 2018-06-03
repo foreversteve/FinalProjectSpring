@@ -22,12 +22,12 @@ public class Player extends MapObject{
   
   
   void update(){
-    userInput();
-    
     for(MapObject obj : world){
        obj.collide(obj, this); 
     }
     
+    userInput();
+  
     xcor+= xspeed;
     ycor+= yspeed; 
     
