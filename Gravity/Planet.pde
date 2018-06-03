@@ -7,6 +7,12 @@ class Planet extends MapObject{
       return false; 
    }
    
+   public void takeDamage(){
+     
+   }
+   
+   
+   
    public Planet(float x, float y,float radius){
      xcor = x;
      ycor = y;
@@ -40,11 +46,16 @@ class Planet extends MapObject{
    }
    
    void run(){
-    display(); 
+    display();
+    for(MapObject obj : world){
+      if(obj.collide()){  
+          update(obj);
+      }
+    }
+    generateParticle(15,18);
    }
    
-   void update(Player user){
-     
+   void update(MapObject user){
      float theta = atan((ycor - user.ycor)/(xcor - user.xcor));
      g = 15 / pow(pow(xcor - user.xcor,2)+ pow(ycor-user.ycor,2),0.5);
      if (xcor - user.xcor > 0){

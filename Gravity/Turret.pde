@@ -1,6 +1,5 @@
 ArrayList<Projectile> projectiless;
 class Turret extends MapObject{
-  
   final String name = "Turret";
   
   float fs;
@@ -13,6 +12,7 @@ class Turret extends MapObject{
       return false; 
    }
   
+  
   public Turret(float x, float y, float ps, float fspeed, String c,Planet p){
     xcor = x;
     ycor = y;
@@ -23,7 +23,7 @@ class Turret extends MapObject{
     colour = c;
     
     float theta = atan((y - p.ycor)/(x - p.xcor));
-    if (x - p.xcor > 0){
+    if(x - p.xcor > 0){
       angle = -theta;
     }
     else{
@@ -51,7 +51,8 @@ class Turret extends MapObject{
         cx = pspeed * cos(theta);
         cy = pspeed * sin(theta);
       }
-      projectiles.add(new Projectile(xcor,ycor,cx,cy,"Yellow"));
+      Projectile proj = new Projectile(xcor,ycor,cx,cy,"Yellow");
+      world.add(proj);
     }
     fs+=1;
   }
@@ -60,11 +61,11 @@ class Turret extends MapObject{
     
   }
   
-  void run(Player p){
+  void run(){
     translate(xcor,ycor);
     display();
     translate(-xcor,-ycor);
-    fire(p);
+    fire((Player) world.get(0));
   }
   
   void display(){

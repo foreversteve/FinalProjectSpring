@@ -20,11 +20,11 @@ public class Player extends MapObject{
   void update(Player user){
    xspeed += .001 * (mouseX - xcor);
     yspeed += .001 * (mouseY - ycor);
-    checkPlanet();
+    //checkPlanet();
   }
   
   
-  void update(ArrayList<MapObject> map){
+  void update(){
     //fix this later, it will prevent the plater for taking damage whene its on the wall
     xcor+= xspeed;
     ycor+= yspeed; 
@@ -52,8 +52,8 @@ public class Player extends MapObject{
   }
   
   if((ycor < height * 9 / 10) && (ycor > height / 10) && (xcor < width * 9 / 10) && (xcor > width / 10)){
-    for(MapObject obj : map){
-       obj.update(this); 
+    for(MapObject obj : world){
+       //obj.update(this); 
     }  
     update(this);
   }
@@ -81,6 +81,7 @@ public class Player extends MapObject{
   void die(){
     
   }
+  /*
   void checkPlanet(){
     for (Planet x : planets){
         if (pow(xcor - x.xcor,2)+ pow(ycor-x.ycor,2) < pow(x.r/2+r/2,2)) {
@@ -113,6 +114,8 @@ public class Player extends MapObject{
       }
     }
   }  
+  
+  */
   void display(){
     
     fill(200);
@@ -122,8 +125,8 @@ public class Player extends MapObject{
   }
   
   
-  void run(ArrayList<MapObject> map){
-    update(map);
+  void run(){
+    update();
     display();
   }
   
@@ -139,7 +142,9 @@ public class Player extends MapObject{
       cx = val * cos(theta);
       cy = val * sin(theta);
     }
-    projectiles.add(new Projectile(xcor,ycor,cx,cy,"White"));
+    Projectile proj = new Projectile(xcor,ycor,cx,cy,"White");
+    world.add(proj);
+    
   }
   
 }

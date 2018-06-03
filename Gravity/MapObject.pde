@@ -1,19 +1,19 @@
 abstract class MapObject{
- public float xcor, ycor, r, xspeed, yspeed;
- public boolean dead;
- String name;
+ public float xcor, ycor, r, xspeed, yspeed, health;
+
  public void move(float xinc, float yinc){
    xcor += xinc;
    ycor += yinc;
  }
  
- //abstract boolean die();
+ //abstract void takeDamage();
  
  abstract boolean collide();
  
  abstract void display();
  
- abstract void update(Player user);
+ abstract void run();
+ 
  
  
  public void collide(MapObject obj1, MapObject obj2){
