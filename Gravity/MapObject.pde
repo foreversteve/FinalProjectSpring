@@ -17,18 +17,55 @@ abstract class MapObject{
  
  
  public void collide(MapObject obj1, MapObject obj2){
-   if(obj1.moves()){
-       collideHelper(obj1,obj2);
-   }
+   if(obj1 != obj2){
+     if(obj1.moves()){
+         collideHelper(obj1,obj2);
+     }
    
-   if(obj2.moves()){
-      collideHelper(obj2, obj1); 
-   }
-     
+     if(obj2.moves()){
+        collideHelper(obj2, obj1); 
+     }
+   }    
  }
  
  public void collideHelper(MapObject obj1, MapObject obj2){
     if (checkCollide(obj1,obj2)){
+      //obj1.xcor -= xspeed; 
+      //obj1.ycor -= yspeed; 
+      
+      
+      obj1.xspeed *= -1;
+      obj1.yspeed *= -1;
+      
+      /*
+      float theta = atan((obj1.ycor - obj2.ycor)/(obj1.xcor - obj2.xcor));
+        if (obj1.xcor != obj2.xcor){
+          if (obj1.xcor - obj2.xcor < 0){
+            if (obj1.ycor - obj2.ycor < 0){
+              obj1.xcor -= xspeed*cos(theta);
+              obj1.ycor -= yspeed*sin(theta);
+            }
+            else{
+              obj1.xcor -= xspeed*cos(theta);
+              obj1.ycor += yspeed*sin(theta);
+            }
+          }
+          else{
+            if (obj1.ycor - obj2.ycor < 0){
+              obj1.xcor -= xspeed*cos(theta);
+              obj1.ycor += yspeed*sin(theta);
+            }
+            else{
+              obj1.xcor -= xspeed*cos(theta);
+              obj1.ycor -= yspeed*sin(theta);
+            }
+          }
+        }
+        obj1.xspeed *= -0.3;
+        obj1.yspeed *= -0.3;
+      
+      */
+      /*
       float theta0= atan (-1 / ((obj1.ycor - obj2.ycor) / (obj1.xcor - obj2.xcor)));
       float theta1 = atan (obj1.yspeed / obj1.xspeed);
       float theta = radians(180) - theta0 - theta1;
@@ -38,6 +75,8 @@ abstract class MapObject{
       float mag = obj1.xspeed;
       obj1.xspeed = mag * cos(theta);
       obj1.yspeed = mag * sin(theta);
+      */
+      
       
     }
       

@@ -24,9 +24,9 @@ public class Player extends MapObject{
   void update(){
     userInput();
     
-    //for(MapObject obj : world){
-    //   obj.collide(obj, this); 
-    //}
+    for(MapObject obj : world){
+       obj.collide(obj, this); 
+    }
     
     xcor+= xspeed;
     ycor+= yspeed; 
