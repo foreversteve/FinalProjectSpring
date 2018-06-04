@@ -1,10 +1,14 @@
 Player player; 
 ArrayList<MapObject> world;
+static float MenuNum;
+PImage img;
  
 void setup(){
-  //fullScreen();
-  size(1200,900);
+  fullScreen();
+  //size(1200,900);
   background(0);
+  MenuNum = 0;
+  img = loadImage("background.jpg");
   
   player = new Player();
   world = new ArrayList<MapObject>();
@@ -16,12 +20,18 @@ void setup(){
 }
  
 void draw(){
-  background(0);
-  crossHair();
-  for(int i = 0; i < world.size(); i++){
-     world.get(i).run(); 
-  } 
-}
+  if (MenuNum == 0){
+    menu();
+  }
+  if (MenuNum == 2){
+    background(0);
+    menu();
+    crossHair();
+    for(int i = 0; i < world.size(); i++){
+       world.get(i).run(); 
+    } 
+  }
+}  
 
 void crossHair(){
    stroke(255);
@@ -30,6 +40,15 @@ void crossHair(){
    stroke(0);
 }
 
+void menu(){
+  image(img,0,0);
+}
+
 void mouseClicked(){
-    player.fire(7.0);
+    if (MenuNum == 0){
+      MenuNum = 2;
+    }
+    else{
+      player.fire(7.0);
+    }
 }
