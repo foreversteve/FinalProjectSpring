@@ -1,5 +1,6 @@
 class Projectile extends MapObject{
   String colour;
+  String type = "Projectile";
   
   public Projectile(float x, float y, float xv, float yv, String c){
     health = 2;
@@ -30,7 +31,7 @@ class Projectile extends MapObject{
   }
   
   void takeDamage(MapObject obj){
-   health--; 
+   health-=2; 
    if(health == 0){
       world.remove(this); 
    }

@@ -1,9 +1,11 @@
-class Planet extends MapObject{
+class Moon extends MapObject{
    float g;
    float direction;
    float distance;
    
-   String type = "Planet";
+   Planet star;
+   
+   String type;
    
    public boolean moves(){
       return false; 
@@ -11,29 +13,21 @@ class Planet extends MapObject{
    
    
    
-   public Planet(float x, float y,float radius){
+   public Moon(float x, float y,float radius,Planet center){
      xcor = x;
      ycor = y;
      r = radius;
-     g = 0.05;
+     g = 0.05*r/200;
      
      // Initialize Particle
      
      direction = 1.0;
-     distance = radius;
+     
+     // Initialize Speeds
+     
+     star = center;
    }
    
-   public Planet(){
-     xcor = width/2;
-     ycor = height/2;
-     r = 100;
-     g = 0.05;
-     
-     // Initialize Particle
-     
-     direction = 1.0;
-     distance = r;
-   }
    
    void display(){
      fill(0,224,224);
@@ -42,15 +36,25 @@ class Planet extends MapObject{
    
    void run(){
      display();
-     generateParticle(15,18);
+     update();
+     generateParticle(15,12);
      for(int i = 0; i < world.size(); i++){
         if(world.get(i).moves()){  
             update(world.get(i));
         }
-      }
+     }
+   }
+   
+   void update(){
+     float dxcor = 300 * cos(radians(frameCount));
+     float dycor = 300 * sin(radians(frameCount));
+     
+     this.xcor = star.xcor + dxcor;
+     this.ycor = star.ycor + dycor;;
    }
    
    void update(MapObject user){
+    
      float theta = atan((ycor - user.ycor)/(xcor - user.xcor));
      g = 15 / pow(pow(xcor - user.xcor,2)+ pow(ycor-user.ycor,2),0.5);
      if (xcor - user.xcor > 0){

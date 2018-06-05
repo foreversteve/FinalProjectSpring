@@ -1,5 +1,6 @@
 abstract class MapObject{
  public float xcor, ycor, r, xspeed, yspeed, health;
+ public String type;
 
  public void shift(float xinc, float yinc){
    xcor += xinc;

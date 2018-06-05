@@ -1,5 +1,6 @@
 public class Player extends MapObject{
   
+  String type = "Player";
   public Player(){
     health = 100;
     
@@ -18,8 +19,17 @@ public class Player extends MapObject{
    
   
   void userInput(){
-    xspeed += .0006 * (mouseX - xcor);
-    yspeed += .0006 * (mouseY - ycor);
+    if (Gravity.keys['a']) //move left 
+      xspeed -= 0.1;
+    if (Gravity.keys['d']) //move right
+      xspeed += 0.1;
+    if (Gravity.keys['w']) //move up
+      yspeed -= 0.1;
+    if (Gravity.keys['s']) //move down
+      yspeed += 0.1;
+    
+     //print(xspeed+" " + yspeed);
+      
   }
   
   
@@ -33,25 +43,25 @@ public class Player extends MapObject{
     xcor+= xspeed;
     ycor+= yspeed; 
     
-   if(ycor > height * 9 / 10){
+   if(ycor > height * 8 / 10){
      for(MapObject x : world){
        x.shift(0 , -yspeed);
      }
     }
     
-    if(ycor < height / 10){
+    if(ycor < height / 5){
       for(MapObject x : world){
         x.shift(0 , -yspeed);
       }
     }
     
-    if(xcor > width * 9 / 10){
+    if(xcor > width * 8 / 10){
       for(MapObject x : world){
         x.shift(-xspeed, 0);
       }
     }
     
-    if(xcor < width / 10){
+    if(xcor < width / 5){
       for(MapObject x : world){
         x.shift(-xspeed , 0);
       }
@@ -96,5 +106,5 @@ public class Player extends MapObject{
     world.add(proj);
     
   }
-  
 }
+  
