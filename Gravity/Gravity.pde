@@ -19,7 +19,7 @@ void setup(){
   
   world.add(player);
   Planet testPlanet = new Planet(width/2 + 200,height/2 + 200 ,200);
-  //world.add(new Turret(width/2-25 + 200 ,height/2-105 + 200,10,1,"Orange",testPlanet));
+  world.add(new Turret(width/2-25 + 200 ,height/2-105 + 200,10,1,"Orange",testPlanet));
   world.add(testPlanet);
   
   Moon testMoon0 = new Moon(width/2-100,height/2,100,testPlanet);
