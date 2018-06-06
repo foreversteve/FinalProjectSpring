@@ -10,7 +10,7 @@ void setup(){
   background(0);
   MenuNum = 0;
   
-  img = loadImage("space.jpg");
+  img = loadImage("venus-transparent.png");
   img1 = loadImage("WallPaper.jpg");
   img2 = loadImage("Menu.jpg");
   
