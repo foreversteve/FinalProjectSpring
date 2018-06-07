@@ -12,11 +12,11 @@ class Moon extends MapObject{
    }
    
    
-   
-   public Moon(float x, float y,float radius,Planet center){
-     xcor = x;
-     ycor = y;
-     r = radius;
+   public Moon(Planet center){
+     xcor = center.xcor - 3 * center.r / 2;
+     ycor = center.ycor;
+     r = radii[7];
+     
      g = 0.05*r/200;
      
      // Initialize Particle
@@ -30,8 +30,9 @@ class Moon extends MapObject{
    
    
    void display(){
-     fill(0,224,224);
-     ellipse(xcor,ycor,r,r);
+     //fill(0,224,224);
+     //ellipse(xcor,ycor,r,r);
+     image(planetImages[7], xcor - radii[7] / 2, ycor - radii[7] / 2);
    }
    
    void run(){
@@ -46,8 +47,8 @@ class Moon extends MapObject{
    }
    
    void update(){
-     float dxcor = 300 * cos(radians(frameCount));
-     float dycor = 300 * sin(radians(frameCount));
+     float dxcor = 3 * star.r * cos(radians(frameCount / 5));
+     float dycor = 3 * star.r * sin(radians(frameCount / 5));
      
      this.xcor = star.xcor + dxcor;
      this.ycor = star.ycor + dycor;;

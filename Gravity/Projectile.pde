@@ -1,8 +1,10 @@
 class Projectile extends MapObject{
   String colour;
   String type = "Projectile";
+  String ptype;
   
-  public Projectile(float x, float y, float xv, float yv, String c){
+  
+  public Projectile(float x, float y, float xv, float yv, String t){
     health = 2;
     
     xcor = x;
@@ -11,8 +13,9 @@ class Projectile extends MapObject{
     xspeed = xv;
     yspeed = yv;
     
-    colour = c;
+    ptype = t;
     r = 10;
+    
   }
   
   public boolean moves(){
@@ -20,14 +23,14 @@ class Projectile extends MapObject{
    }
    
   void display(){
-    if (colour.equals("White")){
-      fill(255);
+    if (ptype.equals("friend")){
+      image(friendP, xcor - friendP.width / 2, ycor - friendP.height/2); 
     }
-    if (colour.equals("Yellow")){
-      fill(255,140,0);
+    if (ptype.equals("foe")){
+      image(foeP, xcor - foeP.width / 2, ycor - foeP.height/2); 
     }
     
-    ellipse(xcor,ycor,r,r);
+    //ellipse(xcor,ycor,r,r);
   }
   
   void takeDamage(MapObject obj){

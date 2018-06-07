@@ -12,11 +12,11 @@ class Turret extends MapObject{
    }
   
   
-  public Turret(float x, float y, float ps, float fspeed, String c, Planet p){
+  public Turret(float ps, float fspeed, String c, Planet p){
     health = 15;
     
-    xcor = x;
-    ycor = y;
+    xcor = p.xcor;
+    ycor = p.ycor - p.r / 2 - 5;
     
     r = 5;
     
@@ -26,8 +26,8 @@ class Turret extends MapObject{
     
     colour = c;
     
-    float theta = atan((y - p.ycor)/(x - p.xcor));
-    if(x - p.xcor > 0){
+    float theta = atan((ycor - p.ycor)/(xcor - p.xcor));
+    if(xcor - p.xcor > 0){
       angle = -theta;
     }
     else{
@@ -38,7 +38,7 @@ class Turret extends MapObject{
   void takeDamage(MapObject obj){
     for(int i = 0; i < world.size(); i++){
       try{
-        if(((Projectile) obj).colour.equals("White")){
+        if(((Projectile) obj).ptype.equals("friend")){
           
           health--;
           if(health == 0){
@@ -66,7 +66,7 @@ class Turret extends MapObject{
         cx = pspeed * cos(theta);
         cy = pspeed * sin(theta);
       }
-      Projectile proj = new Projectile(xcor,ycor - 10,cx,cy,"Yellow");
+      Projectile proj = new Projectile(xcor,ycor - 10,cx,cy,"foe");
       world.add(proj);
     }
     fs+=1;
@@ -84,8 +84,9 @@ class Turret extends MapObject{
     System.out.println(health);
     fill((255 / 15) * (15 - health),140,0);
     //rotate(radians(60));
-    ellipse(25,0,30,16);
-    rect(0,0,50,20);
+    image(turret, xcor - turret.width / 2, ycor - turret.height / 2);
+    //ellipse(25,0,30,16);
+    //rect(0,0,50,20);
     
   }
 }

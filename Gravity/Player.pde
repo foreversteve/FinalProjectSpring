@@ -72,9 +72,10 @@ public class Player extends MapObject{
   
   
   void display(){
-    fill(200);
-    ellipse(xcor,ycor,r,r);
-    text(health,20,20);
+    //fill(200);
+    //ellipse(xcor,ycor,r,r);
+    text(health,30,30);
+    image(ship, xcor - ship.width / 2, ycor - ship.height / 2);
   }
   
   
@@ -102,7 +103,7 @@ public class Player extends MapObject{
       cx = val * cos(theta);
       cy = val * sin(theta);
     }
-    Projectile proj = new Projectile(xcor + 5 * cx,ycor + 5 * cy,cx,cy,"White");
+    Projectile proj = new Projectile(xcor + 5 * cx,ycor + 5 * cy,cx,cy,"friend");
     world.add(proj);
     
   }

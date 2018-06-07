@@ -15,7 +15,7 @@ abstract class MapObject{
  
  abstract void run();
  
- 
+
  
  public void collide(MapObject obj1, MapObject obj2){
    
