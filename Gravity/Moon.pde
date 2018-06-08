@@ -6,6 +6,7 @@ class Moon extends MapObject{
    Planet star;
    
    String type;
+   float frame;
    
    public boolean moves(){
       return false; 
@@ -26,6 +27,7 @@ class Moon extends MapObject{
      // Initialize Speeds
      
      star = center;
+     frame = 0;
    }
    
    
@@ -47,11 +49,15 @@ class Moon extends MapObject{
    }
    
    void update(){
-     float dxcor = 3 * star.r * cos(radians(frameCount / 5));
-     float dycor = 3 * star.r * sin(radians(frameCount / 5));
+     if (frame > 1000){
+       frame =0;
+     }
+     float dxcor = 3 * star.r * cos(radians(frame));
+     float dycor = 3 * star.r * sin(radians(frame));
      
      this.xcor = star.xcor + dxcor;
-     this.ycor = star.ycor + dycor;;
+     this.ycor = star.ycor + dycor;
+     frame+=0.2;
    }
    
    void update(MapObject user){

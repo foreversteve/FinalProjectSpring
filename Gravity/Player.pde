@@ -1,5 +1,5 @@
 public class Player extends MapObject{
-  
+  boolean buffed;
   String type = "Player";
   public Player(){
     health = 100;
@@ -11,6 +11,7 @@ public class Player extends MapObject{
     yspeed = 0.0;
     
     r = 40.0;
+    buffed = false;
   }
   
   public boolean moves(){
@@ -101,7 +102,7 @@ public class Player extends MapObject{
     }
     else{
       cx = val * cos(theta);
-      cy = val * sin(theta);
+      cy = val * sin(theta); 
     }
     Projectile proj = new Projectile(xcor + 5 * cx,ycor + 5 * cy,cx,cy,"friend");
     world.add(proj);
