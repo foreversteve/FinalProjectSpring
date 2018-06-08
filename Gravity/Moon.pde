@@ -3,10 +3,12 @@ class Moon extends MapObject{
    float direction;
    float distance;
    
-   Planet star;
+   MapObject star;
    
    String type;
    float frame;
+   
+   PImage imagg;
    
    public boolean moves(){
       return false; 
@@ -28,13 +30,33 @@ class Moon extends MapObject{
      
      star = center;
      frame = 0;
+     imagg = planetImages[7];
+   }
+   
+   public Moon(Moon center, PImage image){
+     xcor = center.xcor - 3 * center.r / 2;
+     ycor = center.ycor;
+     r = radii[7];
+     
+     g = 0.05*r/200;
+     
+     // Initialize Particle
+     
+     direction = 1.0;
+     
+     // Initialize Speeds
+     
+     star = center;
+     frame = 0;
+     
+     imagg = image;
    }
    
    
    void display(){
      //fill(0,224,224);
      //ellipse(xcor,ycor,r,r);
-     image(planetImages[7], xcor - radii[7] / 2, ycor - radii[7] / 2);
+     image(imagg, xcor - radii[7] / 2, ycor - radii[7] / 2);
    }
    
    void run(){

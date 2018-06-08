@@ -11,27 +11,27 @@ void map1(){
   world.add(new Turret(10,1,"Orange",testPlanet0));
   world.add(testPlanet0);
   
-  //Planet testPlanet1 = new Planet(width/2 - 2000, height/2 + 3000 , 1);
-  //world.add(new Turret(10,1,"Orange",testPlanet1));
-  //world.add(testPlanet1);
+  Planet testPlanet1 = new Planet(width/2 - 2000, height/2 + 3000 , 1);
+  world.add(new Turret(10,1,"Orange",testPlanet1));
+  world.add(testPlanet1);
   
   Planet testPlanet2 = new Planet(width/2 - 500, height/2 + 400 , 4);
   world.add(new Turret(10,1,"Orange",testPlanet2));
   world.add(testPlanet2);
   
-  //Planet testPlanet3 = new Planet(width/2 - 3000, height/2 - 3000 , 5);
-  //world.add(new Turret(10,1,"Orange",testPlanet3));
-  //world.add(testPlanet3);
+  Planet testPlanet3 = new Planet(width/2 - 3000, height/2 - 3000 , 5);
+  world.add(new Turret(10,1,"Orange",testPlanet3));
+  world.add(testPlanet3);
   
-  //Planet testPlanet4 = new Planet(width/2 + 1000, height/2 + 7000 , 6);
-  //world.add(new Turret(10,1,"Orange",testPlanet4));
-  //world.add(testPlanet4);
+  Planet testPlanet4 = new Planet(width/2 + 1000, height/2 + 7000 , 6);
+  world.add(new Turret(10,1,"Orange",testPlanet4));
+  world.add(testPlanet4);
   
   Moon testMoon0 = new Moon(testPlanet0);
   world.add(testMoon0);
   
-  //Moon testMoon1 = new Moon(width/2+500, height/2, 100, testPlanet);
-  //world.add(testMoon1);
+  Moon testMoon1 = new Moon(testPlanet2);
+  world.add(testMoon1);
   
   Buff test0 = new Buff(400,400);
   world.add(test0);
