@@ -5,6 +5,8 @@ class Turret extends MapObject{
   String colour;
   float angle;
   
+  Planet planet;
+  
   String type = "Turret";
   
   public boolean moves(){
@@ -15,13 +17,10 @@ class Turret extends MapObject{
   public Turret(float ps, float fspeed, String c, Planet p){
     health = 15;
     
-    xcor = p.xcor;
-    ycor = p.ycor - p.r / 2 - 5;
-    
     r = 5;
     
     fs = fspeed;
-    
+    planet = p;
     pspeed = ps;
     
     colour = c;
@@ -66,14 +65,18 @@ class Turret extends MapObject{
         cx = pspeed * cos(theta);
         cy = pspeed * sin(theta);
       }
-      Projectile proj = new Projectile(xcor,ycor - 10,cx,cy,"foe");
-      world.add(proj);
+      if(ycor > player.ycor){
+        Projectile proj = new Projectile(xcor,ycor - 10,cx,cy,"foe");
+        world.add(proj);
+      }
     }
     fs+=1;
   }
   
   
   void run(){
+    xcor = planet.xcor;
+    ycor = planet.ycor - planet.r / 2 - 5;
     translate(xcor,ycor);
     display();
     translate(-xcor,-ycor);
@@ -84,9 +87,9 @@ class Turret extends MapObject{
     //System.out.println(health);
     fill((255 / 15) * (15 - health),140,0);
     //rotate(radians(60));
-    //image(turret, xcor - turret.width / 2, ycor - turret.height / 2);
-    ellipse(25,0,30,16);
-    rect(0,0,50,20);
+    image(turret, xcor - turret.width / 2, ycor - turret.height / 2);
+    //ellipse(25,0,30,16);
+    //rect(0,0,50,20);
     
   }
 }

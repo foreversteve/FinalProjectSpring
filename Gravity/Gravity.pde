@@ -33,8 +33,8 @@ void map1(){
   Moon testMoon1 = new Moon(testPlanet2);
   world.add(testMoon1);
   
-  Buff test0 = new Buff(400,400);
-  world.add(test0);
+  //Buff test0 = new Buff(400,400);
+  //world.add(test0);
 }
  
 
@@ -95,7 +95,7 @@ void loadImages(){
   ship.resize(100,100);
   
   turret = loadImage("turett.png");
-  turret.resize(200,200);
+  turret.resize(50,50);
 }
  
 void setup(){
