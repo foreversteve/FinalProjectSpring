@@ -88,7 +88,7 @@ public class Player extends MapObject{
   void takeDamage(MapObject obj){
     health--; 
     if(health == 0){
-       world.remove(this); 
+       MenuNum = 3; 
     }
   }
   
@@ -108,5 +108,8 @@ public class Player extends MapObject{
     world.add(proj);
     
   }
+  public String getType(){
+     return "Player";
+   }
 }
   

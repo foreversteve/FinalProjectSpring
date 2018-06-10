@@ -3,6 +3,8 @@ class Projectile extends MapObject{
   String type = "Projectile";
   String ptype;
   
+  float distance;
+  
   
   public Projectile(float x, float y, float xv, float yv, String t){
     health = 2;
@@ -16,6 +18,7 @@ class Projectile extends MapObject{
     ptype = t;
     r = 10;
     
+    distance = 0;
   }
   
   public boolean moves(){
@@ -35,6 +38,9 @@ class Projectile extends MapObject{
   
   void takeDamage(MapObject obj){
    health-=2; 
+   if (this.distance > 10){
+     this.health = 0;
+   }
    if(health == 0){
       world.remove(this); 
    }
@@ -51,7 +57,10 @@ class Projectile extends MapObject{
     xcor += xspeed;
     ycor += yspeed;
     
+    distance += 1;
     display();
   }
-  
+  public String getType(){
+     return "Projectile";
+   }
 }

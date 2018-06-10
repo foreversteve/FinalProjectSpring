@@ -5,7 +5,7 @@ class Moon extends MapObject{
    
    MapObject star;
    
-   String type;
+   String type = "Moon";
    float frame;
    
    PImage imagg;
@@ -117,5 +117,9 @@ class Moon extends MapObject{
    
    void takeDamage(MapObject obj){
      
+   }
+   
+   public String getType(){
+     return "Moon";
    }
  }

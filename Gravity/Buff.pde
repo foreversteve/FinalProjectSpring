@@ -28,4 +28,7 @@ class Buff extends MapObject{
     }
     
   }
+  public String getType(){
+     return "Buff";
+   }
 }

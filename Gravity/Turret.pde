@@ -92,4 +92,7 @@ class Turret extends MapObject{
     //rect(0,0,50,20);
     
   }
+  public String getType(){
+     return "Turret";
+   }
 }

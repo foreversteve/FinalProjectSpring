@@ -95,4 +95,7 @@ class Planet extends MapObject{
    void takeDamage(MapObject obj){
      
    }
+   public String getType(){
+     return "Planet";
+   }
  }

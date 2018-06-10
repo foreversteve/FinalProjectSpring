@@ -3,7 +3,7 @@ ArrayList<MapObject> world;
 static float MenuNum;
 PImage[] planetImages;
 float[] radii;
-PImage wallPaper,menuImage, friendP, foeP, explosion, ship, turret;
+PImage wallPaper,menuImage,menuImage1, friendP, foeP, explosion, ship, turret;
 static boolean [] keys = new boolean[128];
  
 void map1(){
@@ -33,6 +33,8 @@ void map1(){
   Moon testMoon1 = new Moon(testPlanet2);
   world.add(testMoon1);
   
+  AI testAI = new AI(width/2-100,height/2-100);
+  world.add(testAI);
   //Buff test0 = new Buff(400,400);
   //world.add(test0);
 }
@@ -89,7 +91,8 @@ void loadImages(){
   foeP.resize(20,20);
   
   wallPaper = loadImage("WallPaper.jpg");
-  menuImage = loadImage("Menu.jpg");
+  menuImage = loadImage("WallPaper.jpg");
+  menuImage1 = loadImage("Menu.jpg");
   
   ship = loadImage("ship.png");
   ship.resize(100,100);
@@ -126,6 +129,10 @@ void draw(){
     for(int i = 0; i < world.size(); i++){
        world.get(i).run(); 
     } 
+    
+  }
+  if (MenuNum == 3){
+    menu3();
   }
 }  
 
@@ -148,12 +155,27 @@ void menu(){
   
   text("Quit",810,550);
 }
-
+void menu3(){
+  image(menuImage1,0,0);
+  
+  textSize(100);
+  //print(width/2);
+  text("Game Over", 600, 250);
+  
+  textSize(40);
+  text("Start New Game", 700, 400);
+  
+  text("Quit to Title",740,550);
+}
 void mouseClicked(){
-    if (MenuNum == 0){
+    if (MenuNum == 3){
+      player.health = 10;
+      MenuNum =2;
+    }
+    else if (MenuNum == 0){
       MenuNum = 2;
     }
-    else{
+    else if (MenuNum == 2){
       player.fire(7.0);
     }
 }
@@ -164,7 +186,7 @@ void keyPressed(){
   catch(ArrayIndexOutOfBoundsException e){
     
   }
-  }
+}
  
   void keyReleased(){
     try{

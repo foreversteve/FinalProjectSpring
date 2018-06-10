@@ -18,17 +18,16 @@ abstract class MapObject{
 
  
  public void collide(MapObject obj1, MapObject obj2){
-   
    if(obj1 != obj2 && checkCollide(obj1,obj2)){
      
      obj1.takeDamage(obj2);
      obj2.takeDamage(obj1);
      
-     if(obj1.moves()){
+     if(obj1.moves() && ! obj1.getType().equals("Projectile")){
          collideHelper(obj1,obj2);
      }
    
-     if(obj2.moves()){
+     if(obj2.moves() && ! obj2.getType().equals("Projectile")){
         collideHelper(obj2, obj1); 
      }
    }  
@@ -37,8 +36,8 @@ abstract class MapObject{
  
  public void collideHelper(MapObject obj1, MapObject obj2){
       
-      obj1.xspeed *= -1;
-      obj1.yspeed *= -1;
+      obj1.xspeed *= -0.3;
+      obj1.yspeed *= -0.3;
       
       /*
       float theta0= atan (-1 / ((obj1.ycor - obj2.ycor) / (obj1.xcor - obj2.xcor)));
@@ -57,6 +56,10 @@ abstract class MapObject{
  
  public boolean checkCollide(MapObject obj1, MapObject obj2){
     return pow(obj1.r/2 + obj2.r/2 ,2) > pow(obj1.xcor-obj2.xcor,2) + pow (obj1.ycor-obj2.ycor,2);
+ }
+ 
+ public String getType(){
+   return this.type;
  }
  
 }
