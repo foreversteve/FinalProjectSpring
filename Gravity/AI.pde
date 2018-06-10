@@ -1,8 +1,7 @@
 public class AI extends MapObject{
-  boolean buffed;
   float fs =1;
   float pspeed,frame;
-  String type = "AI";
+
   public AI(float x,float y){
     health = 100;
     
@@ -13,30 +12,16 @@ public class AI extends MapObject{
     yspeed = 0.0;
     
     r = 40.0;
-    buffed = false;
     
     pspeed = 10;
     frame = 0;
   }
   
+  
   public boolean moves(){
     return true; 
   }
    
-  
-  void userInput(){
-    if (Gravity.keys['a']) //move left 
-      xspeed -= 0.1;
-    if (Gravity.keys['d']) //move right
-      xspeed += 0.1;
-    if (Gravity.keys['w']) //move up
-      yspeed -= 0.1;
-    if (Gravity.keys['s']) //move down
-      yspeed += 0.1;
-    
-     //print(xspeed+" " + yspeed);
-      
-  }
   
   
   void update(){
@@ -46,28 +31,39 @@ public class AI extends MapObject{
        world.get(i).collide(world.get(i), this); 
       }
     }
-    //userInput();
     
+    float theta = atan((player.ycor - ycor)/(player.xcor - xcor));
+    float xdiff = abs(5 * cos(theta));
+    float ydiff = abs(5 * sin(theta));
     
-    if (frame > 1000){
-       frame =0;
+    if(player.xcor < xcor){
+      xdiff *= -1;
     }
-     float dxcor = 200 * cos(radians(frame));
-     float dycor = 200 * sin(radians(frame));
+    
+    if(player.ycor < ycor){
+       ydiff *= -1; 
+    }
+    xcor += xdiff;
+    ycor += ydiff;
+    
+    //if (frame > 1000){
+    //   frame =0;
+   // }
+     //float dxcor = 200 * cos(radians(frame));
+     //float dycor = 200 * sin(radians(frame));
      
-     this.xcor = player.xcor + dxcor;
-     this.ycor = player.ycor + dycor;
-     frame+=2;
+     //this.xcor = player.xcor + dxcor;
+     //this.ycor = player.ycor + dycor;
+     //frame+=2;
     
   }
   
   
   
   void display(){
-    fill(200);
-    ellipse(xcor,ycor,r,r);
-    //text(health,30,30);
-    //image(ship, xcor - ship.width / 2, ycor - ship.height / 2);
+    tint(100, 0, 0);
+    image(ship, xcor - ship.width / 2, ycor - ship.height / 2);
+    noTint();
   }
   
   
@@ -101,7 +97,7 @@ public class AI extends MapObject{
         cy = pspeed * sin(theta);
       }
       if(ycor > player.ycor){
-        Projectile proj = new Projectile(xcor,ycor - 10,cx,cy,"foe");
+        Projectile proj = new Projectile(xcor, ycor,cx,cy,"foe");
         world.add(proj);
       }
     }

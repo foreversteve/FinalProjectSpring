@@ -19,7 +19,7 @@ abstract class MapObject{
  
  public void collide(MapObject obj1, MapObject obj2){
    if(obj1 != obj2 && checkCollide(obj1,obj2)){
-     
+  
      obj1.takeDamage(obj2);
      obj2.takeDamage(obj1);
      

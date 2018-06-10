@@ -44,25 +44,25 @@ public class Player extends MapObject{
     xcor+= xspeed;
     ycor+= yspeed; 
     
-   if(ycor > height * 7 / 13){
+   if(ycor > height / 2){
      for(MapObject x : world){
        x.shift(0 , -yspeed);
      }
     }
     
-    if(ycor < height * 6 / 13){
+    if(ycor < height / 2){
       for(MapObject x : world){
         x.shift(0 , -yspeed);
       }
     }
     
-    if(xcor > width * 7 / 13){
+    if(xcor > width / 2){
       for(MapObject x : world){
         x.shift(-xspeed, 0);
       }
     }
     
-    if(xcor < width * 6 / 13){
+    if(xcor < width / 2){
       for(MapObject x : world){
         x.shift(-xspeed , 0);
       }
@@ -73,12 +73,14 @@ public class Player extends MapObject{
   
   
   void display(){
-    //fill(200);
-    //ellipse(xcor,ycor,r,r);
-    text(health,30,30);
+    
+    fill(((100 - health) / 100) * 255, (health / 100) * 255, 0); 
+    rect(20,20,100,50);
+    fill(0);
+    text((int) health, 30, 60);
     image(ship, xcor - ship.width / 2, ycor - ship.height / 2);
-  }
   
+}
   
   void run(){
     update();
@@ -106,8 +108,8 @@ public class Player extends MapObject{
     }
     Projectile proj = new Projectile(xcor + 5 * cx,ycor + 5 * cy,cx,cy,"friend");
     world.add(proj);
-    
   }
+  
   public String getType(){
      return "Player";
    }

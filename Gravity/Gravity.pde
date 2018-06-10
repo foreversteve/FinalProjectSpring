@@ -3,40 +3,10 @@ ArrayList<MapObject> world;
 static float MenuNum;
 PImage[] planetImages;
 float[] radii;
-PImage wallPaper,menuImage,menuImage1, friendP, foeP, explosion, ship, turret;
+PImage wallPaper,menuImage,menuImage1, friendP, foeP, explosion, ship, turret, enemy;
 static boolean [] keys = new boolean[128];
- 
-void map1(){
-  Planet testPlanet0 = new Planet(width/2 + 200, height/2 + 200 , 1);
-  world.add(new Turret(10,1,"Orange",testPlanet0));
-  world.add(testPlanet0);
-  
-  Planet testPlanet1 = new Planet(width/2 - 2000, height/2 + 3000 , 1);
-  world.add(new Turret(10,1,"Orange",testPlanet1));
-  world.add(testPlanet1);
-  
-  Planet testPlanet2 = new Planet(width/2 - 500, height/2 + 400 , 4);
-  world.add(new Turret(10,1,"Orange",testPlanet2));
-  world.add(testPlanet2);
-  
-  Planet testPlanet3 = new Planet(width/2 - 3000, height/2 - 3000 , 5);
-  world.add(new Turret(10,1,"Orange",testPlanet3));
-  world.add(testPlanet3);
-  
-  Planet testPlanet4 = new Planet(width/2 + 1000, height/2 + 7000 , 6);
-  world.add(new Turret(10,1,"Orange",testPlanet4));
-  world.add(testPlanet4);
-  
-  Moon testMoon0 = new Moon(testPlanet0);
-  world.add(testMoon0);
-  
-  Moon testMoon1 = new Moon(testPlanet2);
-  world.add(testMoon1);
-  
-  AI testAI = new AI(width/2-100,height/2-100);
-  world.add(testAI);
-}
- 
+
+
 
 void loadImages(){
   planetImages = new PImage[9];
@@ -88,8 +58,11 @@ void loadImages(){
   foeP = loadImage("fireball.png");
   foeP.resize(20,20);
   
-  wallPaper = loadImage("WallPaper.jpg");
+  wallPaper = loadImage("background.jpg");
+  wallPaper.resize(width,height);
+  
   menuImage = loadImage("WallPaper.jpg");
+  
   menuImage1 = loadImage("Menu.jpg");
   
   ship = loadImage("ship.png");
@@ -99,9 +72,48 @@ void loadImages(){
   turret.resize(50,50);
 }
  
+
+
+ 
+void map1(){
+  /*
+  Planet testPlanet0 = new Planet(width/2 + 200, height/2 + 200 , 1);
+  world.add(new Turret(10,1,"Orange",testPlanet0));
+  world.add(testPlanet0);
+  
+  Planet testPlanet1 = new Planet(width/2 - 2000, height/2 + 3000 , 1);
+  world.add(new Turret(10,1,"Orange",testPlanet1));
+  world.add(testPlanet1);
+  
+  Planet testPlanet2 = new Planet(width/2 - 500, height/2 + 400 , 4);
+  world.add(new Turret(10,1,"Orange",testPlanet2));
+  world.add(testPlanet2);
+  
+  Planet testPlanet3 = new Planet(width/2 - 3000, height/2 - 3000 , 5);
+  world.add(new Turret(10,1,"Orange",testPlanet3));
+  world.add(testPlanet3);
+  
+  Planet testPlanet4 = new Planet(width/2 + 1000, height/2 + 7000 , 6);
+  world.add(new Turret(10,1,"Orange",testPlanet4));
+  world.add(testPlanet4);
+  
+  Moon testMoon0 = new Moon(testPlanet0);
+  world.add(testMoon0);
+  
+  Moon testMoon1 = new Moon(testPlanet2);
+  world.add(testMoon1);
+  */
+  
+  AI testAI = new AI(0,0);
+  world.add(testAI);
+}
+ 
+
+
+
 void setup(){
-  fullScreen();
-  background(0);
+  //fullScreen();
+  size(1200,800);
   MenuNum = 0;
   
   loadImages();
@@ -119,10 +131,10 @@ void setup(){
  
 void draw(){
   if (MenuNum == 0){
-    menu();
+    introMenu();
   }
   if (MenuNum == 2){
-    background(0);
+    background(wallPaper);
     crossHair();
     for(int i = 0; i < world.size(); i++){
        world.get(i).run(); 
@@ -141,8 +153,8 @@ void crossHair(){
    stroke(0);
 }
 
-void menu(){
-  image(menuImage,0,0);
+void introMenu(){
+  image(menuImage,width - menuImage.width / 2, height - menuImage.height / 2);
   
   textSize(100);
   //print(width/2);
@@ -153,6 +165,8 @@ void menu(){
   
   text("Quit",810,550);
 }
+
+
 void menu3(){
   image(menuImage1,0,0);
   
@@ -165,6 +179,8 @@ void menu3(){
   
   text("Quit to Title",740,550);
 }
+
+
 void mouseClicked(){
     if (MenuNum == 3){
       setup();
@@ -177,6 +193,7 @@ void mouseClicked(){
       player.fire(7.0);
     }
 }
+
 void keyPressed(){
   try{
     Gravity.keys[key] = true;
