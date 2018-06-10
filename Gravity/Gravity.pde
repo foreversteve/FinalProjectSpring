@@ -35,8 +35,6 @@ void map1(){
   
   AI testAI = new AI(width/2-100,height/2-100);
   world.add(testAI);
-  //Buff test0 = new Buff(400,400);
-  //world.add(test0);
 }
  
 
@@ -169,7 +167,7 @@ void menu3(){
 }
 void mouseClicked(){
     if (MenuNum == 3){
-      player.health = 10;
+      setup();
       MenuNum =2;
     }
     else if (MenuNum == 0){

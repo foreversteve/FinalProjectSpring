@@ -24,7 +24,7 @@ class Moon extends MapObject{
      
      // Initialize Particle
      
-     direction = 1.0;
+    // direction = 1.0;
      
      // Initialize Speeds
      
@@ -33,6 +33,7 @@ class Moon extends MapObject{
      imagg = planetImages[7];
    }
    
+   /*
    public Moon(Moon center, PImage image){
      xcor = center.xcor - 3 * center.r / 2;
      ycor = center.ycor;
@@ -42,7 +43,7 @@ class Moon extends MapObject{
      
      // Initialize Particle
      
-     direction = 1.0;
+     //direction = 1.0;
      
      // Initialize Speeds
      
@@ -51,6 +52,8 @@ class Moon extends MapObject{
      
      imagg = image;
    }
+   
+   */
    
    
    void display(){
@@ -62,13 +65,14 @@ class Moon extends MapObject{
    void run(){
      display();
      update();
-     generateParticle(15,12);
+     //generateParticle(15,12);
      for(int i = 0; i < world.size(); i++){
         if(world.get(i).moves()){  
             update(world.get(i));
         }
      }
    }
+   
    
    void update(){
      if (frame > 1000){
@@ -82,8 +86,7 @@ class Moon extends MapObject{
      frame+=0.2;
    }
    
-   void update(MapObject user){
-    
+   void update(MapObject user){ 
      float theta = atan((ycor - user.ycor)/(xcor - user.xcor));
      g = 15 / pow(pow(xcor - user.xcor,2)+ pow(ycor-user.ycor,2),0.5);
      if (xcor - user.xcor > 0){
@@ -97,6 +100,7 @@ class Moon extends MapObject{
      
    }
    
+   /*
    void generateParticle(float radius,float number){
      
      if (distance > r + 5 * radius){
@@ -114,6 +118,7 @@ class Moon extends MapObject{
      distance += 2.5*direction;
      
    }
+   */
    
    void takeDamage(MapObject obj){
      

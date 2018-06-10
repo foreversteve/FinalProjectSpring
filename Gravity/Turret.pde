@@ -85,9 +85,9 @@ class Turret extends MapObject{
   
   void display(){
     //System.out.println(health);
-    fill((255 / 15) * (15 - health),140,0);
+    //fill((255 / 15) * (15 - health),140,0);
     //rotate(radians(60));
-    image(turret, xcor - turret.width / 2, ycor - turret.height / 2);
+    image(turret, 20, 20);
     //ellipse(25,0,30,16);
     //rect(0,0,50,20);
     

@@ -2,16 +2,11 @@ class Planet extends MapObject{
    float g;
    float direction;
    float distance;
-   
-   String type = "Planet";
-   
    int ptype;
    
    public boolean moves(){
       return false; 
    }
-   
-   
    
    public Planet(float x, float y, int t){
      xcor = x;
@@ -24,35 +19,18 @@ class Planet extends MapObject{
      
      // Initialize Particle
      
-     direction = 1.0;
-     distance = r;
+     //direction = 1.0;
+     //distance = r;
    }
    
-   //Idt we should use this constructor, or at least not for what were doing right now
-   /*
-   public Planet(){
-     xcor = width/2;
-     ycor = height/2;
-     
-     r = 100;
-     g = 0.05;
-     
-     // Initialize Particle
-     
-     direction = 1.0;
-     distance = r;
-   }
-   */
    
    void display(){
-     //fill(0,224,224);
-     //ellipse(xcor,ycor,r,r);
      image(planetImages[ptype], xcor - planetImages[ptype].width / 2, ycor - planetImages[ptype].height / 2);
    }
    
    void run(){
      display();
-     generateParticle(15,18);
+     //generateParticle(15,18);
      for(int i = 0; i < world.size(); i++){
         if(world.get(i).moves()){  
             update(world.get(i));
@@ -74,6 +52,7 @@ class Planet extends MapObject{
      
    }
    
+   /*
    void generateParticle(float radius,float number){
      
      if (distance > r + 5 * radius){
@@ -91,10 +70,12 @@ class Planet extends MapObject{
      distance += 2.5*direction;
      
    }
+   */
    
    void takeDamage(MapObject obj){
      
    }
+   
    public String getType(){
      return "Planet";
    }
