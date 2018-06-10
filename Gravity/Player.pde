@@ -73,7 +73,7 @@ public class Player extends MapObject{
   
   
   void display(){
-    
+    strokeWeight(4);
     fill(((100 - health) / 100) * 255, (health / 100) * 255, 0); 
     rect(20,20,100,50);
     fill(0);
@@ -90,7 +90,7 @@ public class Player extends MapObject{
   void takeDamage(MapObject obj){
     health--; 
     if(health == 0){
-       MenuNum = 3; 
+       MenuNum = 2; 
     }
   }
   

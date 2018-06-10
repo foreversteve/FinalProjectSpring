@@ -62,6 +62,7 @@ void loadImages(){
   wallPaper.resize(width,height);
   
   menuImage = loadImage("WallPaper.jpg");
+  menuImage.resize(width, height);
   
   menuImage1 = loadImage("Menu.jpg");
   
@@ -76,11 +77,11 @@ void loadImages(){
 
  
 void map1(){
-  /*
+  
   Planet testPlanet0 = new Planet(width/2 + 200, height/2 + 200 , 1);
   world.add(new Turret(10,1,"Orange",testPlanet0));
   world.add(testPlanet0);
-  
+  /*
   Planet testPlanet1 = new Planet(width/2 - 2000, height/2 + 3000 , 1);
   world.add(new Turret(10,1,"Orange",testPlanet1));
   world.add(testPlanet1);
@@ -107,13 +108,21 @@ void map1(){
   AI testAI = new AI(0,0);
   world.add(testAI);
 }
+
+void map2(){
+  
+}
+
+void map3(){
+  
+}
  
 
 
 
 void setup(){
-  //fullScreen();
-  size(1200,800);
+  fullScreen();
+  //size(1200,800);
   MenuNum = 0;
   
   loadImages();
@@ -122,9 +131,6 @@ void setup(){
   world = new ArrayList<MapObject>();
   
   world.add(player);
-  
-  map1();
-  
 }
  
  
@@ -133,15 +139,14 @@ void draw(){
   if (MenuNum == 0){
     introMenu();
   }
-  if (MenuNum == 2){
+  if (MenuNum == 1){
     background(wallPaper);
     crossHair();
     for(int i = 0; i < world.size(); i++){
        world.get(i).run(); 
-    } 
-    
+    }     
   }
-  if (MenuNum == 3){
+  if (MenuNum == 2){
     menu3();
   }
 }  
@@ -154,16 +159,21 @@ void crossHair(){
 }
 
 void introMenu(){
-  image(menuImage,width - menuImage.width / 2, height - menuImage.height / 2);
-  
+  image(menuImage,0, 0);
+  strokeWeight(4);
   textSize(100);
-  //print(width/2);
-  text("Gravity", 690, 250);
+  text("Gravity", (width / 2) - 200, (height / 2) - 100);
   
   textSize(40);
-  text("Start Game", 750, 400);
+  text("Map 1", (width / 2) - 100, (height / 2) + 50);
+  text("Map 2", (width / 2) - 100, (height / 2) + 150);
+  text("Map 3", (width / 2) - 100, (height / 2) + 250);
   
-  text("Quit",810,550);
+  fill(100,100,100);
+  rect((width / 2) - 90, (height / 2) + 60, 100, 50);
+  rect((width / 2) - 90, (height / 2) + 160, 100, 50);
+  rect((width / 2) - 90, (height / 2) + 260, 100, 50);
+  fill(255);
 }
 
 
@@ -182,14 +192,25 @@ void menu3(){
 
 
 void mouseClicked(){
-    if (MenuNum == 3){
+    if (MenuNum == 2){
       setup();
-      MenuNum =2;
+      MenuNum = 1;
     }
     else if (MenuNum == 0){
-      MenuNum = 2;
+      if((mouseX > (width / 2) - 90) && (mouseY > (height / 2) + 60) && (mouseX < (width / 2) + 10) && (mouseY < (height / 2) + 110)){
+       map1(); 
+       MenuNum = 1;
+      }
+      if((mouseX > (width / 2) - 90) && (mouseY > (height / 2) + 160) && (mouseX < (width / 2) + 10) && (mouseY < (height / 2) + 210)){
+       map2(); 
+       MenuNum = 1;
+      }
+      if((mouseX > (width / 2) - 90) && (mouseY > (height / 2) + 260) && (mouseX < (width / 2) + 10) && (mouseY < (height / 2) + 310)){
+       map2(); 
+       MenuNum = 1;
+      }
     }
-    else if (MenuNum == 2){
+    else if (MenuNum == 1){
       player.fire(7.0);
     }
 }

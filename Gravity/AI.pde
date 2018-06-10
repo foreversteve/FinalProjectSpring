@@ -97,7 +97,7 @@ public class AI extends MapObject{
         cy = pspeed * sin(theta);
       }
       if(ycor > player.ycor){
-        Projectile proj = new Projectile(xcor, ycor,cx,cy,"foe");
+        Projectile proj = new Projectile(xcor, ycor, cx,cy,"foe");
         world.add(proj);
       }
     }
