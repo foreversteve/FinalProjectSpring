@@ -77,9 +77,9 @@ class Turret extends MapObject{
   void run(){
     xcor = planet.xcor;
     ycor = planet.ycor - planet.r / 2 - 5;
-    translate(xcor,ycor);
+    //translate(xcor,ycor);
     display();
-    translate(-xcor,-ycor);
+    //translate(-xcor,-ycor);
     fire(player);
   }
   
@@ -87,7 +87,7 @@ class Turret extends MapObject{
     //System.out.println(health);
     //fill((255 / 15) * (15 - health),140,0);
     //rotate(radians(60));
-    image(turret, 20, 20);
+    image(turret, xcor - turret.width / 2, ycor - turret.height / 2);
     //ellipse(25,0,30,16);
     //rect(0,0,50,20);
     
