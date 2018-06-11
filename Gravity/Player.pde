@@ -81,8 +81,20 @@ public class Player extends MapObject{
     image(ship, xcor - ship.width / 2, ycor - ship.height / 2);
   
 }
+
+boolean checkWin(){
+  for(MapObject obj : world){
+     if(obj.getType().equals("Turret") || obj.getType().equals("AI")){
+        return false; 
+     }
+  }
+  return true;
+}
   
   void run(){
+    if(checkWin()){
+       MenuNum = 3; 
+    }
     update();
     display();
   }

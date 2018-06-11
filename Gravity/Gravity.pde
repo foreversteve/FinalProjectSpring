@@ -64,7 +64,6 @@ void loadImages(){
   menuImage = loadImage("WallPaper.jpg");
   menuImage.resize(width, height);
   
-  menuImage1 = loadImage("Menu.jpg");
   
   ship = loadImage("ship.png");
   ship.resize(100,100);
@@ -78,10 +77,12 @@ void loadImages(){
  
 void map1(){
   
+  /*
   Planet testPlanet0 = new Planet(width/2 + 200, height/2 + 200 , 1);
   world.add(new Turret(10,1,"Orange",testPlanet0));
   world.add(testPlanet0);
-  /*
+  
+  
   Planet testPlanet1 = new Planet(width/2 - 2000, height/2 + 3000 , 1);
   world.add(new Turret(10,1,"Orange",testPlanet1));
   world.add(testPlanet1);
@@ -104,6 +105,7 @@ void map1(){
   Moon testMoon1 = new Moon(testPlanet2);
   world.add(testMoon1);
   */
+  
   
   AI testAI = new AI(0,0);
   world.add(testAI);
@@ -147,9 +149,12 @@ void draw(){
     }     
   }
   if (MenuNum == 2){
-    menu3();
+    menuLose();
   }
-}  
+  if(MenuNum == 3){
+   menuWin(); 
+  }
+}
 
 void crossHair(){
    stroke(255);
@@ -177,24 +182,34 @@ void introMenu(){
 }
 
 
-void menu3(){
-  image(menuImage1,0,0);
-  
+void menuLose(){
+  image(menuImage,0,0);
+  fill(255);
   textSize(100);
-  //print(width/2);
-  text("Game Over", 600, 250);
+  text("Game Over", (width / 2) - 300, (height / 2) - 100);
   
   textSize(40);
-  text("Start New Game", 700, 400);
+  text("Click Anywhere to Start New Game", (width / 2) - 400, (height / 2) + 100);
+}
+
+void menuWin(){
+ image(menuImage, 0, 0);
+ fill(255);
+ textSize(100);
+ text("You Win!", (width / 2) - 300, (height / 2) - 100);
+ 
+ textSize(40);
+ text("Click Anywhere to Start New Game", (width / 2) - 400, (height / 2) + 100);
   
-  text("Quit to Title",740,550);
 }
 
 
+
+
 void mouseClicked(){
-    if (MenuNum == 2){
+    if (MenuNum == 2 || MenuNum == 3){
       setup();
-      MenuNum = 1;
+      MenuNum = 0;
     }
     else if (MenuNum == 0){
       if((mouseX > (width / 2) - 90) && (mouseY > (height / 2) + 60) && (mouseX < (width / 2) + 10) && (mouseY < (height / 2) + 110)){
