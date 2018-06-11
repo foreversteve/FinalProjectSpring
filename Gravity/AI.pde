@@ -3,7 +3,7 @@ public class AI extends MapObject{
   float pspeed,frame;
 
   public AI(float x,float y){
-    health = 100;
+    health = 20;
     
     xcor = x;
     ycor = y;
@@ -70,7 +70,7 @@ public class AI extends MapObject{
   void run(){
     update();
     display();
-    fire(player);
+  //  fire(player);
   }
   
   void takeDamage(MapObject obj){
@@ -79,7 +79,7 @@ public class AI extends MapObject{
        world.remove(this); 
     }
   }
-  
+  /*
   void fire(Player p){
     float theta = atan((ycor - p.ycor)/(xcor - p.xcor));
     float cx;
@@ -104,6 +104,8 @@ public class AI extends MapObject{
     fs+=1;
     
   }
+  
+  */
   public String getType(){
      return "AI";
    }

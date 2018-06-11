@@ -77,8 +77,8 @@ void loadImages(){
  
 void map1(){
   
-  /*
-  Planet testPlanet0 = new Planet(width/2 + 200, height/2 + 200 , 1);
+  
+  Planet testPlanet0 = new Planet(width/2 + 500, height/2 + 500 , 1);
   world.add(new Turret(10,1,"Orange",testPlanet0));
   world.add(testPlanet0);
   
@@ -87,7 +87,7 @@ void map1(){
   world.add(new Turret(10,1,"Orange",testPlanet1));
   world.add(testPlanet1);
   
-  Planet testPlanet2 = new Planet(width/2 - 500, height/2 + 400 , 4);
+  Planet testPlanet2 = new Planet(width/2 - 800, height/2 + 1200 , 4);
   world.add(new Turret(10,1,"Orange",testPlanet2));
   world.add(testPlanet2);
   
@@ -104,19 +104,99 @@ void map1(){
   
   Moon testMoon1 = new Moon(testPlanet2);
   world.add(testMoon1);
-  */
   
   
-  AI testAI = new AI(0,0);
-  world.add(testAI);
+  
+  AI AI1 = new AI(-80,-80);
+  world.add(AI1);
+  
+  AI AI2 = new AI(700,700);
+  world.add(AI2);
+  
+  AI AI3 = new AI(-600,0);
+  world.add(AI3);
+  
+  AI AI4 = new AI(0,1200);
+  world.add(AI4);
 }
 
 void map2(){
   
+  Planet testPlanet0 = new Planet(width/2 - 500, height/2 + 500 , 6);
+  world.add(new Turret(10,1,"Orange",testPlanet0));
+  world.add(testPlanet0);
+  
+  Planet testPlanet2 = new Planet(width/2 - 800, height/2 + 1200 , 2);
+  world.add(new Turret(10,1,"Orange",testPlanet2));
+  world.add(testPlanet2);
+  
+  Moon testMoon0 = new Moon(testPlanet0);
+  world.add(testMoon0);
+  
+  Moon testMoon1 = new Moon(testPlanet2);
+  world.add(testMoon1);
+  
+  
+  
+  AI AI1 = new AI(-180,-180);
+  world.add(AI1);
+  
+  AI AI2 = new AI(1700,1700);
+  world.add(AI2);
+  
+  AI AI3 = new AI(-1600,0);
+  world.add(AI3);
+  
+  AI AI4 = new AI(0,1200);
+  world.add(AI4);
+  
+  AI AI5 = new AI(-800,-800);
+  world.add(AI5);
+  
+  AI AI6 = new AI(7000,7000);
+  world.add(AI6);
+  
+  AI AI7 = new AI(-6000,0);
+  world.add(AI7);
+  
+  AI AI8 = new AI(10,1200);
+  world.add(AI8);
 }
 
 void map3(){
+  Planet testPlanet0 = new Planet(width/2 + 1500, height/2 + 500 , 3);
+  world.add(new Turret(10,1,"Orange",testPlanet0));
+  world.add(testPlanet0);
   
+  Planet testPlanet1 = new Planet(width/2 - 2000, 0 , 2);
+  world.add(new Turret(10,1,"Orange",testPlanet1));
+  world.add(testPlanet1);
+  
+  Planet testPlanet2 = new Planet(width/2 - 800, height/2, 5);
+  world.add(new Turret(10,1,"Orange",testPlanet2));
+  world.add(testPlanet2);
+  
+  Planet testPlanet3 = new Planet(width/2 + 3000, height/2 - 300 , 8);
+  world.add(new Turret(10,1,"Orange",testPlanet3));
+  world.add(testPlanet3);
+  
+  Planet testPlanet4 = new Planet(width/2 + 100, height/2 + 7000 , 1);
+  world.add(new Turret(10,1,"Orange",testPlanet4));
+  world.add(testPlanet4);
+  
+  Planet testPlanet5 = new Planet(width/2 + 7000, height/2 + 100 , 6);
+  world.add(new Turret(10,1,"Orange",testPlanet4));
+  world.add(testPlanet5);
+  
+  Planet testPlanet6 = new Planet(width/2, height/2 + 5000 , 6);
+  world.add(new Turret(10,1,"Orange",testPlanet4));
+  world.add(testPlanet6);
+  
+  AI AI4 = new AI(0,1200);
+  world.add(AI4);
+  
+  AI AI5 = new AI(-800,-800);
+  world.add(AI5);
 }
  
 
@@ -221,7 +301,7 @@ void mouseClicked(){
        MenuNum = 1;
       }
       if((mouseX > (width / 2) - 90) && (mouseY > (height / 2) + 260) && (mouseX < (width / 2) + 10) && (mouseY < (height / 2) + 310)){
-       map2(); 
+       map3(); 
        MenuNum = 1;
       }
     }
