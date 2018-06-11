@@ -44,25 +44,25 @@ public class Player extends MapObject{
     xcor+= xspeed;
     ycor+= yspeed; 
     
-   if(ycor > height / 2){
+   if(ycor > height / 2 + 200){
      for(MapObject x : world){
        x.shift(0 , -yspeed);
      }
     }
     
-    if(ycor < height / 2){
+    if(ycor < height / 2 - 200){
       for(MapObject x : world){
         x.shift(0 , -yspeed);
       }
     }
     
-    if(xcor > width / 2){
+    if(xcor > width / 2 + 200){
       for(MapObject x : world){
         x.shift(-xspeed, 0);
       }
     }
     
-    if(xcor < width / 2){
+    if(xcor < width / 2 - 200){
       for(MapObject x : world){
         x.shift(-xspeed , 0);
       }
