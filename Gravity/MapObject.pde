@@ -23,11 +23,11 @@ abstract class MapObject{
      obj1.takeDamage(obj2);
      obj2.takeDamage(obj1);
      
-     if(obj1.moves() && ! obj1.getType().equals("Projectile")){
+     if(obj1.moves()){
          collideHelper(obj1,obj2);
      }
    
-     if(obj2.moves() && ! obj2.getType().equals("Projectile")){
+     if(obj2.moves()){
         collideHelper(obj2, obj1); 
      }
    }  
